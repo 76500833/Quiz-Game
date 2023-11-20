@@ -10,6 +10,7 @@ questions = document.getElementById("questions");
 //* Answers:
 choices = document.getElementById("choice");
 
+nextButton = document.getElementById("nextButton");
 // ! Seconds left (begining with). This is used in the timer.
 secondsLeft = 40;
 
@@ -17,10 +18,19 @@ secondsLeft = 40;
 function startGame() {
   startButton.addEventListener("click", function () {
     setTime();
-    
+
+    updateQuestionAndChoices();
   });
 }
-
+//! An event listener that updates currentQuestionIndex.
+nextButton.addEventListener('click', function() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questionsAndAnswers.length) {
+      updateQuestionAndChoices();
+  } else {
+      console.log('No more questions');
+  }
+});
 // ! Timer that decreases the seconds left by using "setInterval".
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -57,7 +67,7 @@ var questionsAndAnswers = [
 
 //TODO Make a function that causes the questions and answers to populate.
 
-//* Generate 4 buttons Credit to co pilot for 61 - 80
+//* Generate 4 buttons Credit to co pilot for 61 -
 // Assuming you have a question element with this ID
 var questionElement = document.getElementById('question');
 
@@ -71,17 +81,20 @@ var buttons = [
 
 var currentQuestionIndex = 0;
 
-function updateQuestionAndChoices() {
-    var currentQuestion = questionsAndAnswers[currentQuestionIndex];
-    questionElement.textContent = currentQuestion.question;
-    for (var i = 0; i < currentQuestion.choices.length; i++) {
-        buttons[i].textContent = currentQuestion.choices[i];
-    }
+  function updateQuestionAndChoices() {
+      var currentQuestion = questionsAndAnswers[currentQuestionIndex];
+      questionElement.textContent = currentQuestion.question;
+      for (var i = 0; i < currentQuestion.choices.length; i++) {
+          buttons[i].textContent = currentQuestion.choices[i];
+      }
 }
+
+
+
 // Assuming you have a "Next" button with this ID in your HTML
 
 // Call initially to set the first question and choices
-updateQuestionAndChoices();
+
 
 // // Add an event listener for the click event
 // button.addEventListener('click', function() {
@@ -97,4 +110,3 @@ updateQuestionAndChoices();
 //TODO Make a function that displays the highscore.
 
 startGame();
-buttonsAndQuestion();
