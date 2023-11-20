@@ -1,8 +1,12 @@
-#choices {
-    list-style: none;
+#answerChoices {
     display: flex;
     flex-direction: column;
-    max-width: 50%;
-    margin: 0 auto;
-    gap: 20px;
+    max-width: 80%;
+    gap: 10px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#score {
+    color: red;
 }

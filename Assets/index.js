@@ -1,86 +1,40 @@
-timer = document.getElementById("timer");
-button = document.getElementById("button");
+// ! Start button:
+startButton = document.getElementById("startButton");
 
+// ! Score:
+score = document.getElementById("score");
 
+// ! Seconds left (begining with). This is used in the timer.
+secondsLeft = 40;
 
-
-
-//* add multiple questions and answer objects:
-
-    
-
-
-
-
-// * counter is skipping one
-    function countdown() {
-        
-        var timeLeft = 5;
-        // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-        var timeInterval = setInterval(function () {
-        // As long as the `timeLeft` is greater than 1
-        if (timeLeft > 1) {
-                // Set the `textContent` of `timerEl` to show the remaining seconds
-            timer.textContent = timeLeft + ' seconds remaining';
-                // Decrement `timeLeft` by 1
-                timeLeft--;
-        } else if (timeLeft === 1) {
-                // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-            timeLeft.textContent = timeLeft + ' second remaining';
-            timeLeft--;
-        } else {
-                // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-            timer.textContent = '';
-                // Use `clearInterval()` to stop the timer
-            clearInterval(timeInterval)
-            }
-            }, 1000);
-    }
-
-button.addEventListener("click", function (event) {
-   event.preventDefault();
-    countdown();
-    var questions = [
-        {
-        question: "What is HTML?",
-        answers: ["Paris", "hyper text markup languge", "Berlin", "Madrid"],
-        correctAnswer: "Paris"
-        },
-        {
-        question: "What is CSS?",
-        answers: ["Mars", "Jupiter", "Venus", "Saturn"],
-        correctAnswer: "Jupiter"
-        },
-    ]
-    localStorage.setItem("questions", JSON.stringify(questions));
-    JSON.parse(localStorage.getItem("questions"));
-
-    for(i = 0; i < questions.length; i++) {
-    
-        //* Populates questions
-        displayThisQuestion = questions[i].question;
-        changeThisQuestion = document.getElementById("question")
-        changeThisQuestion.textContent = displayThisQuestion;
-
-        //* Populates answers
-        var answerOptions = document.getElementsByClassName("answers");
-
-        for (var i = 0; i < answerOptions.length; i++) {
-            answerOptions[i].textContent = questions[0].answers[i];
+// ! Listen for a click on the start button and then calls the setTime() function.
+function startGame() {
+    startButton.addEventListener("click", function() {
+        setTime(); 
+    });
 }
+
+// ! Timer that decreases the seconds left by using "setInterval".
+function setTime() {
+    var timerInterval = setInterval(function() {
+    // ! setInterval(function) calls a function or evaluates an expression at specified intervals (in milliseconds).
+    // ! Every second that passes, the secondsLeft variable is checked to see if it is equal to 0.    
+    if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            return
         }
+    // ! Every second, the secondsLeft variable is decreased by one 
+        secondsLeft--;
+    // ! and the textContent of the score element is updated.
+        score.textContent = "Time: " + secondsLeft;
+    }, 1000);
+}
 
+//TODO Make a function that causes the questions and answers to populate.
+//TODO Make a function that checks the answers.
+//TODO Make a function that ends the game when the timer reaches 0.
+//TODO Implement a highscore system.
+//TODO Make a function that saves the highscore to local storage.
+//TODO Make a function that displays the highscore.
 
-    
-   
-});
-// var displayTheseAnswers = questions[i].answers;
-// var answerOptions = document.getElementsByClassName("answer");
-
-// for (var j = 0; j < displayTheseAnswers.length; j++) {
-//     answerOptions[j].textContent = displayTheseAnswers[j];
-// }
-
-// // Break the loop after displaying the first question and its answers
-// break;
-// }
+startGame();
