@@ -56,6 +56,40 @@ var questionsAndAnswers = [
 ];
 
 //TODO Make a function that causes the questions and answers to populate.
+
+//* Generate 4 buttons Credit to co pilot for 61 - 80
+// Assuming you have a question element with this ID
+var questionElement = document.getElementById('question');
+
+// Assuming you have 4 buttons with these IDs in your HTML
+var buttons = [
+    document.getElementById('button1'),
+    document.getElementById('button2'),
+    document.getElementById('button3'),
+    document.getElementById('button4')
+];
+
+var currentQuestionIndex = 0;
+
+function updateQuestionAndChoices() {
+    var currentQuestion = questionsAndAnswers[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        buttons[i].textContent = currentQuestion.choices[i];
+    }
+}
+// Assuming you have a "Next" button with this ID in your HTML
+
+// Call initially to set the first question and choices
+updateQuestionAndChoices();
+
+// // Add an event listener for the click event
+// button.addEventListener('click', function() {
+//     console.log('Button was clicked');
+// });
+
+// Add the button to the body of the document
+
 //TODO Make a function that checks the answers.
 //TODO Make a function that ends the game when the timer reaches 0.
 //TODO Implement a highscore system.
@@ -63,3 +97,4 @@ var questionsAndAnswers = [
 //TODO Make a function that displays the highscore.
 
 startGame();
+buttonsAndQuestion();
