@@ -1,8 +1,8 @@
 //* Start button that starts the game and timer
+startButton = document.getElementById("startButton");
+score = document.getElementById("score");
+secondsLeft = 20;
 function startGame() {
-    startButton = document.getElementById("startButton");
-    score = document.getElementById("score");
-    secondsLeft = 20;
     startButton.addEventListener("click", function() {
         setTime(); //* Timer that decreases the seconds left by using "setInterval"
     });
