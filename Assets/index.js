@@ -1,10 +1,15 @@
 timer = document.getElementById("timer");
 button = document.getElementById("button");
+questionsAndAnswers = {
+    whatisHTML: "hyper text markup language"
+}
+localStorage.setItem("questionsAndAnswers", JSON.stringify(questionsAndAnswers));
 
 
+// * counter is skipping one
     function countdown() {
         
-        var timeLeft = 100;
+        var timeLeft = 5;
         // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
         var timeInterval = setInterval(function () {
         // As long as the `timeLeft` is greater than 1

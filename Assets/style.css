@@ -1,3 +1,8 @@
-#timer {
-    background-color: red;
+#choices {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: 0 auto;
+    gap: 20px;
 }
