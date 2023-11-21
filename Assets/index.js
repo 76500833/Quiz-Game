@@ -78,15 +78,19 @@ var buttons = [
     document.getElementById('button3'),
     document.getElementById('button4')
 ];
-
+// buttons.addEventListener('click', function() {
+//   if (buttons.textContent === questionsAndAnswers.answer) {
+//     console.log("correct");
+//   }
+// });
 var currentQuestionIndex = 0;
 
-  function updateQuestionAndChoices() {
-      var currentQuestion = questionsAndAnswers[currentQuestionIndex];
-      questionElement.textContent = currentQuestion.question;
-      for (var i = 0; i < currentQuestion.choices.length; i++) {
-          buttons[i].textContent = currentQuestion.choices[i];
-      }
+function updateQuestionAndChoices() {
+  var currentQuestion = questionsAndAnswers[currentQuestionIndex];
+  questionElement.textContent = currentQuestion.question;
+  for (var i = 0; i < currentQuestion.choices.length; i++) {
+    buttons[i].textContent = currentQuestion.choices[i];
+  }
 }
 
 
@@ -102,8 +106,9 @@ var currentQuestionIndex = 0;
 // });
 
 // Add the button to the body of the document
-
+//* next button works. It goes to the next question.
 //TODO Make a function that checks the answers.
+//log user click
 //TODO Make a function that ends the game when the timer reaches 0.
 //TODO Implement a highscore system.
 //TODO Make a function that saves the highscore to local storage.
