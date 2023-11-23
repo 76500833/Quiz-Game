@@ -48,7 +48,8 @@ function finalScreen() {
   $("#timer").text(userScore + " is your score");
   questions.hide()
   displayName.show()
-  localStorage.setItem(score)
+  localStorage.setItem("score", JSON.stringify(userScore))
+  var userScore = JSON.parse(localStorage.getItem('userScore'))
 }
 
   //* set questions display to none
