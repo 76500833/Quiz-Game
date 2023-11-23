@@ -1,16 +1,21 @@
 $('#questions').children().each(function(){
   $(this).css('display', 'none')
 })
-//? Name value
 var name = $('input[name="name"]').val()
+
 var displayName = $('input[name="name"]')
+
 var startButton = $("#start");
+
 var secondsLeft = 10;
+
 var timer = $("#timer");
+
 var questions = $('#questions')
 
 function startTimer() {
-  $('#questions').children().each(function(){
+  // $('#questions').children().each(function(){
+    questions.children().each(function(){
     $(this).css('display', 'flex')
     displayName.css('display', 'none')
   })
@@ -18,7 +23,7 @@ function startTimer() {
 
     secondsLeft--;
     timer.text(secondsLeft);
-    
+    //! if you get a q wrong it sends you into the negative
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       timer.text("");
@@ -53,7 +58,7 @@ startButton.on("click", function () {
 });
 
 function displayQuestionOne () {
-    //*displays first qestion and answers
+
     var question = $("#question-text").text("What is HTML")
     var answerOne = $("#a1").addClass('correct').text('hypertext markup language')
     var answerTwo = $("#a2").addClass('wrong').text('hypertext monkey language')
@@ -133,9 +138,12 @@ function displayQuestionSix () {
   var button = $('button')
   button.on('click', function(event){
     if($(this).hasClass("correct")){
-      displayQuestionSeven()
+
     } else {
       secondsLeft = secondsLeft - 2
+      if (secondsLeft === 0) {
+        //TODO store user input in local storage
+      }
     }
 })}
 
