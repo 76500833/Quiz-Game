@@ -1,7 +1,9 @@
 $('#questions').children().each(function(){
   $(this).css('display', 'none')
 })
-
+//? Name value
+var name = $('input[name="name]').val()
+var displayName = $('input[name="name]')
 var startButton = $("#start");
 var secondsLeft = 10;
 var timer = $("#timer");
@@ -9,15 +11,19 @@ var questions = $('#questions')
 
 function startTimer() {
   $('#questions').children().each(function(){
-    $(this).css('display', 'block')
+    $(this).css('display', 'flex')
   })
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timer.text(secondsLeft);
-
+    
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
       timer.text("");
+      //TODO make an input and set its display
+     questions.css('display', 'none')
+     displayName.css('display', 'inline')
+    //  document.append(<h1>jdawdwa</h1>)
     }
   }, 1000);
 }
@@ -41,11 +47,11 @@ startButton.on("click", function () {
   //* Timer
   startTimer();
   //* Displays questions/answers. Checks if user was correct/panalizes -2 seconds. 
-  displayQuestions()
+  displayQuestionOne()
 
 });
 
-function displayQuestions () {
+function displayQuestionOne () {
     //*displays first qestion and answers
     var question = $("#question-text").text("What is HTML")
     var answerOne = $("#a1").addClass('correct').text('hypertext markup language')
@@ -131,3 +137,5 @@ function displayQuestionSix () {
       secondsLeft = secondsLeft - 2
     }
 })}
+
+//TODO Emplement if time === zero functionality
