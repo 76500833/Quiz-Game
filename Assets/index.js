@@ -1,6 +1,9 @@
 $('#questions').children().each(function(){
   $(this).css('display', 'none')
 })
+var score = $('#score')
+var button = $('#submit')
+
 var name = $('input[name="name"]').val()
 
 var displayName = $('input[name="name"]')
@@ -26,10 +29,12 @@ function startTimer() {
     //! if you get a q wrong it sends you into the negative
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      timer.text("");
+      //*run a function (game over screen)
       //TODO make an input and set its display
-     questions.css('display', 'none')
-     displayName.css('display', 'inline')
+      questions.css('display', 'none')
+      //TODO Display
+      //! center this text
+      timer.text("Game Over");
     }
   }, 1000);
 }
@@ -138,13 +143,24 @@ function displayQuestionSix () {
   var button = $('button')
   button.on('click', function(event){
     if($(this).hasClass("correct")){
-
+      //TODO put function here
     } else {
       secondsLeft = secondsLeft - 2
-      if (secondsLeft === 0) {
-        //TODO store user input in local storage
-      }
     }
 })}
+//TODO Write function here:
+      //* pause timer
+function endGame() {
+  clearInterval(timerInterval)
+}
+      //* set questions display to none
+      //* show input field
+      //*and store score in local storage, with the key being the 
+      //*value of the input
 
-//TODO Emplement if time === zero functionality
+
+
+
+//? Create a function that displays the user input and submit buttons upon completion.
+//? Thenrun it in q 6
+
