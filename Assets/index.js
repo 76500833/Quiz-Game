@@ -10,34 +10,49 @@ var displayName = $('input[name="name"]')
 
 var startButton = $("#start");
 
-var secondsLeft = 10;
+var secondsLeft = 5;
 
 var timer = $("#timer");
 
 var questions = $('#questions')
-
+var timerInterval;
 function startTimer() {
   // $('#questions').children().each(function(){
-    questions.children().each(function(){
-    $(this).css('display', 'flex')
-    displayName.css('display', 'none')
+  questions.children().each(function(){
+  $(this).css('display', 'flex')
+  displayName.css('display', 'none')
   })
   var timerInterval = setInterval(function () {
 
-    secondsLeft--;
-    timer.text(secondsLeft);
-    //! if you get a q wrong it sends you into the negative
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      //*run a function (game over screen)
-      //TODO make an input and set its display
-      questions.css('display', 'none')
-      //TODO Display
-      //! center this text
-      timer.text("Game Over");
-    }
-  }, 1000);
+    if (secondsLeft > 0) {
+      secondsLeft--;
+      timer.text(secondsLeft);
+      if (secondsLeft === 0) { //! force game over screen
+        clearInterval(timerInterval);
+        questions.css('display', 'none')
+        timer.text("Game Over");
+      }
+      }
+      function finalScreen() {
+        //* capture the score
+        var capturedTime = secondsLeft
+        clearInterval()
+        $("#timer").text("");
+        console.log(capturedTime);
+      
+        //* set questions display to none
+      
+        //* show input field
+      
+        //* store score in local storage, with the key being the value of the input
+      
+      }
+
+      
+    }, 1000);
+
 }
+
 questionsAndAnswers = {
   questionOne: "This is question one",
   answerOne: "This is answer one",
@@ -65,7 +80,7 @@ startButton.on("click", function () {
 function displayQuestionOne () {
 
     var question = $("#question-text").text("What is HTML")
-    var answerOne = $("#a1").addClass('correct').text('hypertext markup language')
+    var answerOne = $("#a1").addClass('correct').text('CORRECT')
     var answerTwo = $("#a2").addClass('wrong').text('hypertext monkey language')
     var answerThree = $("#a3").addClass('wrong').text('hyper caffienated monkey dance')
     var answerFour = $("#a4").addClass('wrong').text('hypertext money laundering')
@@ -80,7 +95,7 @@ function displayQuestionOne () {
       })}
 function displayQuestionTwo () {
   var question = $("#question-text").text("What is CSS")
-  var answerOne = $("#a1").addClass('correct').text('A')
+  var answerOne = $("#a1").addClass('correct').text('CORRECT')
   var answerTwo = $("#a2").addClass('wrong').text('B')
   var answerThree = $("#a3").addClass('wrong').text('C')
   var answerFour = $("#a4").addClass('wrong').text('D')
@@ -94,7 +109,7 @@ function displayQuestionTwo () {
   })}
 function displayQuestionThree(){
   var question = $("#question-text").text("What is 3")
-  var answerOne = $("#a1").addClass('correct').text('3A')
+  var answerOne = $("#a1").addClass('correct').text('CORRECT')
   var answerTwo = $("#a2").addClass('wrong').text('3B')
   var answerThree = $("#a3").addClass('wrong').text('3C')
   var answerFour = $("#a4").addClass('wrong').text('3D')
@@ -108,7 +123,7 @@ function displayQuestionThree(){
 })}
 function displayQuestionFour () {
   var question = $("#question-text").text("What is 4CSS")
-  var answerOne = $("#a1").addClass('correct').text('4A')
+  var answerOne = $("#a1").addClass('correct').text('CORRECT')
   var answerTwo = $("#a2").addClass('wrong').text('4B')
   var answerThree = $("#a3").addClass('wrong').text('4C')
   var answerFour = $("#a4").addClass('wrong').text('4D')
@@ -122,7 +137,7 @@ function displayQuestionFour () {
 })}
 function displayQuestionFive () {
   var question = $("#question-text").text("What is 5CSS")
-  var answerOne = $("#a1").addClass('correct').text('45A')
+  var answerOne = $("#a1").addClass('correct').text('CORRECT')
   var answerTwo = $("#a2").addClass('wrong').text('45B')
   var answerThree = $("#a3").addClass('wrong').text('45C')
   var answerFour = $("#a4").addClass('wrong').text('45D')
@@ -134,6 +149,8 @@ function displayQuestionFive () {
       secondsLeft = secondsLeft - 2
     }
 })}
+
+
 function displayQuestionSix () {
   var question = $("#question-text").text("What is 46CSS")
   var answerOne = $("#a1").addClass('correct').text('46A')
@@ -143,21 +160,33 @@ function displayQuestionSix () {
   var button = $('button')
   button.on('click', function(event){
     if($(this).hasClass("correct")){
-      //TODO put function here
+      
+// !since the only thing you can touch is seconds left you have to set it to zero
+// !so you can force the closing of the timer
     } else {
+      // !Force game over
       secondsLeft = secondsLeft - 2
     }
 })}
-//TODO Write function here:
-      //* pause timer
-function endGame() {
-  clearInterval(timerInterval)
-}
-      //* set questions display to none
-      //* show input field
-      //*and store score in local storage, with the key being the 
-      //*value of the input
 
+//! fix negative!
+//* To be ran upon last correct answer.
+// function endGame() {
+//   //* capture the score
+//   var capturedTime = secondsLeft
+
+//   $("#timer").text("");
+//   console.log(capturedTime);
+
+  //* set questions display to none
+
+  //* show input field
+
+  //* store score in local storage, with the key being the value of the input
+
+
+
+      
 
 
 
