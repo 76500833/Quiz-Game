@@ -3,11 +3,19 @@ $('#questions').children().each(function(){
 })
 var score = $('#score')
 var button = $('#submit')
-
-var name = $('input[name="name"]').val()
-
+var displayNameValue1 = ""
+var displayNameValue = $('input[name="name"]')
+displayNameValue.on('change', function() {
+  
+  displayNameValue1 = displayNameValue.val();
+  console.log(displayNameValue)
+  console.log(displayNameValue.val())
+  localStorage.setItem("userNames", JSON.stringify(displayNameValue.val()))
+})
+//! read from the object as you add the names to it board.key.score .append
+console.log(displayNameValue)
 var displayName = $('input[name="name"]')
-
+console.log(displayName)
 var startButton = $("#start");
 
 var secondsLeft = 10;
@@ -39,24 +47,37 @@ function startTimer() {
     }, 1000);
 
 }
-var userScore = "";
+var userScore = {};
 function finalScreen() {
-  //* capture the score
+
   userScore = (secondsLeft)
-  score.text(userScore)
+  var leaderboard = {
+    userOne: {
+      name: displayNameValue1,
+      userOneScore: userScore,
+    } 
+  }
+  // var appendMyName = leaderboard.userOne.name
+  // appendMe.append$('#score')
+console.log(leaderboard.userOne.name)
   secondsLeft = 0
   $("#timer").text(userScore + " is your score");
   questions.hide()
   displayName.show()
-  localStorage.setItem("score", JSON.stringify(userScore))
-  var userScore = JSON.parse(localStorage.getItem('userScore'))
+
+  localStorage.setItem("leaderboard", JSON.stringify((leaderboard)))
+  
+  localStorage.setItem("userNames", JSON.stringify(displayNameValue1))
+  var leaderBoardName = JSON.parse(localStorage.getItem('userNames'))
+  score.show()
+  $('#leaderboard').append(leaderBoardName);
+  // var userOneScore = JSON.parse(localStorage.getItem('score'))
+  // console.log(userScore)
 }
+//! localStorage.setItem("object", JSON.stringify(object));
 
-  //* set questions display to none
-
-  //* show input field
-
-  //* store score in local storage, with the key being the value of the input
+//TODO leadboard list (off to side?)
+//TODO replay by clicking start
 
 
 
@@ -168,35 +189,12 @@ function displayQuestionSix () {
   button.on('click', function(event){
     if($(this).hasClass("correct")){
       finalScreen()
-
-      
     } else {
       // !Force game over
       secondsLeft = secondsLeft - 2
     }
 })}
 
-//! fix negative!
-//* To be ran upon last correct answer.
-// function endGame() {
-//   //* capture the score
-//   var capturedTime = secondsLeft
-
-//   $("#timer").text("");
-//   console.log(capturedTime);
-
-  //* set questions display to none
-
-  //* show input field
-
-  //* store score in local storage, with the key being the value of the input
-
-
-
-      
-
-
-
-//? Create a function that displays the user input and submit buttons upon completion.
-//? Thenrun it in q 6
+  //* store score in local storage
+  //TODO append local storage to page
 
