@@ -2,8 +2,8 @@ $('#questions').children().each(function(){
   $(this).css('display', 'none')
 })
 //? Name value
-var name = $('input[name="name]').val()
-var displayName = $('input[name="name]')
+var name = $('input[name="name"]').val()
+var displayName = $('input[name="name"]')
 var startButton = $("#start");
 var secondsLeft = 10;
 var timer = $("#timer");
@@ -12,8 +12,10 @@ var questions = $('#questions')
 function startTimer() {
   $('#questions').children().each(function(){
     $(this).css('display', 'flex')
+    displayName.css('display', 'none')
   })
   var timerInterval = setInterval(function () {
+
     secondsLeft--;
     timer.text(secondsLeft);
     
@@ -23,7 +25,6 @@ function startTimer() {
       //TODO make an input and set its display
      questions.css('display', 'none')
      displayName.css('display', 'inline')
-    //  document.append(<h1>jdawdwa</h1>)
     }
   }, 1000);
 }
