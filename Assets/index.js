@@ -39,13 +39,16 @@ function startTimer() {
     }, 1000);
 
 }
-var secondsLeft1 = "";
+var userScore = "";
 function finalScreen() {
   //* capture the score
-  secondsLeft1 = (secondsLeft)
-  score.text(secondsLeft1)
+  userScore = (secondsLeft)
+  score.text(userScore)
   secondsLeft = 0
-  $("#timer").text("");
+  $("#timer").text(userScore + " is your score");
+  questions.hide()
+  displayName.show()
+  localStorage.setItem(score)
 }
 
   //* set questions display to none
