@@ -10,7 +10,7 @@ var displayName = $('input[name="name"]')
 
 var startButton = $("#start");
 
-var secondsLeft = 5;
+var secondsLeft = 10;
 
 var timer = $("#timer");
 
@@ -33,25 +33,28 @@ function startTimer() {
         timer.text("Game Over");
       }
       }
-      function finalScreen() {
-        //* capture the score
-        var capturedTime = secondsLeft
-        clearInterval()
-        $("#timer").text("");
-        console.log(capturedTime);
       
-        //* set questions display to none
       
-        //* show input field
-      
-        //* store score in local storage, with the key being the value of the input
-      
-      }
-
       
     }, 1000);
 
 }
+var secondsLeft1 = "";
+function finalScreen() {
+  //* capture the score
+  secondsLeft1 = (secondsLeft)
+  score.text(secondsLeft1)
+  secondsLeft = 0
+  $("#timer").text("");
+}
+
+  //* set questions display to none
+
+  //* show input field
+
+  //* store score in local storage, with the key being the value of the input
+
+
 
 questionsAndAnswers = {
   questionOne: "This is question one",
@@ -160,9 +163,9 @@ function displayQuestionSix () {
   var button = $('button')
   button.on('click', function(event){
     if($(this).hasClass("correct")){
+      finalScreen()
+
       
-// !since the only thing you can touch is seconds left you have to set it to zero
-// !so you can force the closing of the timer
     } else {
       // !Force game over
       secondsLeft = secondsLeft - 2
