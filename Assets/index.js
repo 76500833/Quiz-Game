@@ -1,12 +1,11 @@
+$('#questions').children().each(function(){
+  $(this).css('display', 'none')
+})
 
 var startButton = $("#start");
 var secondsLeft = 10;
 var timer = $("#timer");
 var questions = $('#questions')
-
-$('#questions').children().each(function(){
-  $(this).css('display', 'none')
-})
 
 function startTimer() {
   $('#questions').children().each(function(){
@@ -38,46 +37,97 @@ questionsAndAnswers = {
 const { questionOne, answerOne, questionTwo, answerTwo,
 questionThree, answerThree, questionFour, answerFour } = questionsAndAnswers;
 
-
 startButton.on("click", function () {
   //* Timer
   startTimer();
   //* Displays questions/answers. Checks if user was correct/panalizes -2 seconds. 
-  displayQuestion()
+  displayQuestions()
 
 });
 
-function displayQuestion () {
+function displayQuestions () {
     //*displays first qestion and answers
     var question = $("#question-text").text("What is HTML")
     var answerOne = $("#a1").addClass('correct').text('hypertext markup language')
     var answerTwo = $("#a2").addClass('wrong').text('hypertext monkey language')
     var answerThree = $("#a3").addClass('wrong').text('hyper caffienated monkey dance')
     var answerFour = $("#a4").addClass('wrong').text('hypertext money laundering')
-    //*checks if click was correct
-    //? Check if user click was correct
-    var button = $('button')
-    button.on('click', function(event){
-
-    //? If correct
-      if($(this).hasClass("correct")){
+      var button = $('button')
+      button.on('click', function(event){
         //? (display next question)
-        //TODO if the click is correct, take to next question
-        var question = $("#question-text").text("What is CSS")
-        var answerOne = $("#a1").addClass('correct').text('A')
-        var answerTwo = $("#a2").addClass('wrong').text('B')
-        var answerThree = $("#a3").addClass('wrong').text('C')
-        var answerFour = $("#a4").addClass('wrong').text('D')
-
-          // var question = $("#question-text").text("WhAAAAACSS")
-          // var answerOne = $("#a1").addClass('correct').text('ADDD')
-          // var answerTwo = $("#a2").addClass('wrong').text('BAA')
-          // var answerThree = $("#a3").addClass('wrong').text('CDDAW')
-          // var answerFour = $("#a4").addClass('wrong').text('DDAW')
-      
-      } else {
-        secondsLeft = secondsLeft - 2
-      }
-    }
-    )
+        if($(this).hasClass("correct")){
+          displayQuestionTwo()
+        } else {
+          secondsLeft = secondsLeft - 2
+        }
+      })}
+function displayQuestionTwo () {
+  var question = $("#question-text").text("What is CSS")
+  var answerOne = $("#a1").addClass('correct').text('A')
+  var answerTwo = $("#a2").addClass('wrong').text('B')
+  var answerThree = $("#a3").addClass('wrong').text('C')
+  var answerFour = $("#a4").addClass('wrong').text('D')
+  var button = $('button')
+  button.on('click', function(event){
+  if($(this).hasClass("correct")){
+    displayQuestionThree()
+  } else {
+    secondsLeft = secondsLeft - 2
   }
+  })}
+function displayQuestionThree(){
+  var question = $("#question-text").text("What is 3")
+  var answerOne = $("#a1").addClass('correct').text('3A')
+  var answerTwo = $("#a2").addClass('wrong').text('3B')
+  var answerThree = $("#a3").addClass('wrong').text('3C')
+  var answerFour = $("#a4").addClass('wrong').text('3D')
+  var button = $('button')
+  button.on('click', function(event){
+    if($(this).hasClass("correct")){
+      displayQuestionFour()
+    } else {
+      secondsLeft = secondsLeft - 2
+    }
+})}
+function displayQuestionFour () {
+  var question = $("#question-text").text("What is 4CSS")
+  var answerOne = $("#a1").addClass('correct').text('4A')
+  var answerTwo = $("#a2").addClass('wrong').text('4B')
+  var answerThree = $("#a3").addClass('wrong').text('4C')
+  var answerFour = $("#a4").addClass('wrong').text('4D')
+  var button = $('button')
+  button.on('click', function(event){
+    if($(this).hasClass("correct")){
+      displayQuestionFive()
+    } else {
+      secondsLeft = secondsLeft - 2
+    }
+})}
+function displayQuestionFive () {
+  var question = $("#question-text").text("What is 5CSS")
+  var answerOne = $("#a1").addClass('correct').text('45A')
+  var answerTwo = $("#a2").addClass('wrong').text('45B')
+  var answerThree = $("#a3").addClass('wrong').text('45C')
+  var answerFour = $("#a4").addClass('wrong').text('45D')
+  var button = $('button')
+  button.on('click', function(event){
+    if($(this).hasClass("correct")){
+      displayQuestionSix()
+    } else {
+      secondsLeft = secondsLeft - 2
+    }
+})}
+function displayQuestionSix () {
+  var question = $("#question-text").text("What is 46CSS")
+  var answerOne = $("#a1").addClass('correct').text('46A')
+  var answerTwo = $("#a2").addClass('wrong').text('46B')
+  var answerThree = $("#a3").addClass('wrong').text('46C')
+  var answerFour = $("#a4").addClass('wrong').text('46D')
+  var button = $('button')
+  button.on('click', function(event){
+    if($(this).hasClass("correct")){
+      displayQuestionSeven()
+    } else {
+      secondsLeft = secondsLeft - 2
+    }
+})}
