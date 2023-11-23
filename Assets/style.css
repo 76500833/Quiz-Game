@@ -1,12 +1,6 @@
-#answerChoices {
-    display: flex;
-    flex-direction: column;
-    max-width: 80%;
-    gap: 10px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-#score {
-    color: red;
+body {
+  
+    background-image: url("blob-scene-haikei.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
