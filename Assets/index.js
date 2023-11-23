@@ -48,33 +48,36 @@ startButton.on("click", function () {
 });
 
 function displayQuestion () {
-
+    //*displays first qestion and answers
     var question = $("#question-text").text("What is HTML")
     var answerOne = $("#a1").addClass('correct').text('hypertext markup language')
     var answerTwo = $("#a2").addClass('wrong').text('hypertext monkey language')
     var answerThree = $("#a3").addClass('wrong').text('hyper caffienated monkey dance')
     var answerFour = $("#a4").addClass('wrong').text('hypertext money laundering')
-
+    //*checks if click was correct
     //? Check if user click was correct
     var button = $('button')
     button.on('click', function(event){
-    //? If correct (display next question)
+
+    //? If correct
       if($(this).hasClass("correct")){
+        //? (display next question)
         //TODO if the click is correct, take to next question
         var question = $("#question-text").text("What is CSS")
         var answerOne = $("#a1").addClass('correct').text('A')
         var answerTwo = $("#a2").addClass('wrong').text('B')
         var answerThree = $("#a3").addClass('wrong').text('C')
         var answerFour = $("#a4").addClass('wrong').text('D')
-      }
-      else {
+
+          // var question = $("#question-text").text("WhAAAAACSS")
+          // var answerOne = $("#a1").addClass('correct').text('ADDD')
+          // var answerTwo = $("#a2").addClass('wrong').text('BAA')
+          // var answerThree = $("#a3").addClass('wrong').text('CDDAW')
+          // var answerFour = $("#a4").addClass('wrong').text('DDAW')
+      
+      } else {
         secondsLeft = secondsLeft - 2
       }
-})
-}
-
-
-//TODO if time reaches zero, take to home page
-//TODO store users name from an input box in local storage + their time
-//TODO print both on the home page
-
+    }
+    )
+  }
