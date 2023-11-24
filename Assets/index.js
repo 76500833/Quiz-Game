@@ -5,33 +5,20 @@ var score = $('#score')
 var button = $('#submit')
 var displayNameValue1 = ""
 var displayNameValue = $('input[name="name"]')
-displayNameValue.on('change', function() {
-  
-  displayNameValue1 = displayNameValue.val();
-  console.log(displayNameValue)
-  console.log(displayNameValue.val())
-  localStorage.setItem("userNames", JSON.stringify(displayNameValue.val()))
-})
-//! read from the object as you add the names to it board.key.score .append
-console.log(displayNameValue)
-var displayName = $('input[name="name"]')
-console.log(displayName)
 var startButton = $("#start");
-
 var secondsLeft = 10;
-
 var timer = $("#timer");
-
 var questions = $('#questions')
 var timerInterval;
+displayNameValue1 = displayNameValue.val();
+var displayName = $('input[name="name"]')
+
 function startTimer() {
-  // $('#questions').children().each(function(){
   questions.children().each(function(){
   $(this).css('display', 'flex')
   displayName.css('display', 'none')
   })
   var timerInterval = setInterval(function () {
-
     if (secondsLeft > 0) {
       secondsLeft--;
       timer.text(secondsLeft);
@@ -41,15 +28,10 @@ function startTimer() {
         timer.text("Game Over");
       }
       }
-      
-      
-      
     }, 1000);
-
 }
 var userScore = {};
 function finalScreen() {
-
   userScore = (secondsLeft)
   var leaderboard = {
     userOne: {
@@ -57,30 +39,23 @@ function finalScreen() {
       userOneScore: userScore,
     } 
   }
-  // var appendMyName = leaderboard.userOne.name
-  // appendMe.append$('#score')
-console.log(leaderboard.userOne.name)
   secondsLeft = 0
   $("#timer").text(userScore + " is your score");
   questions.hide()
   displayName.show()
-
-  localStorage.setItem("leaderboard", JSON.stringify((leaderboard)))
-  
-  localStorage.setItem("userNames", JSON.stringify(displayNameValue1))
-  var leaderBoardName = JSON.parse(localStorage.getItem('userNames'))
+  //? retrieve the value associated with the key "userNames" from the browser's local storage.
+  var leaderBoardName = JSON.parse(localStorage.getItem("userNames"))
   score.show()
   $('#leaderboard').append(leaderBoardName);
-  // var userOneScore = JSON.parse(localStorage.getItem('score'))
-  // console.log(userScore)
+  $("#inputField").show();
+  $("#submit").show();
+  $("#submit").on("click", function() {
+    displayNameValue1 = displayNameValue.val();
+    localStorage.setItem("userNames", JSON.stringify(displayNameValue1));
+    var leaderBoardName = JSON.parse(localStorage.getItem("userNames"))
+    $('#leaerboard').append(leaderBoardName)
+  });
 }
-//! localStorage.setItem("object", JSON.stringify(object));
-
-//TODO leadboard list (off to side?)
-//TODO replay by clicking start
-
-
-
 questionsAndAnswers = {
   questionOne: "This is question one",
   answerOne: "This is answer one",
@@ -106,7 +81,6 @@ startButton.on("click", function () {
 });
 
 function displayQuestionOne () {
-
     var question = $("#question-text").text("What is HTML")
     var answerOne = $("#a1").addClass('correct').text('CORRECT')
     var answerTwo = $("#a2").addClass('wrong').text('hypertext monkey language')
@@ -177,8 +151,6 @@ function displayQuestionFive () {
       secondsLeft = secondsLeft - 2
     }
 })}
-
-
 function displayQuestionSix () {
   var question = $("#question-text").text("What is 46CSS")
   var answerOne = $("#a1").addClass('correct').text('46A')
