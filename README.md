@@ -1,8 +1,6 @@
 # Week-1-Homework/Challenge
 Live Site: [https://76500833.github.io/Week-1-Homework/](https://76500833.github.io/Quiz-Game/)
 
-Ethan Metz,
-Full Stack Developer
 ![image](https://github.com/76500833/Quiz-Game/assets/145300587/c4a75cac-8085-4d6b-a200-084be061aeee)
 
 ## Description
