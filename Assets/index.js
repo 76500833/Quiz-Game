@@ -15,6 +15,7 @@ $(document).ready(function() {
 
   var score = $('#score')
   var button = $('#submit')
+
   var displayNameValue1 = ""
   var displayNameValue = $('input[name="name"]')
   var startButton = $("#start");
