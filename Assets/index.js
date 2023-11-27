@@ -18,7 +18,7 @@ $(document).ready(function() {
   var displayNameValue1 = ""
   var displayNameValue = $('input[name="name"]')
   var startButton = $("#start");
-  var secondsLeft = 6;
+  var secondsLeft = 70;
   var timer = $("#timer");
   var questions = $('#questions')
   var timerInterval;
@@ -73,7 +73,7 @@ $(document).ready(function() {
       var leaderBoardScore = JSON.parse(localStorage.getItem("Score"))
         var emptyLi = $('.leaderboard').filter(function() {
       return !this.innerHTML;
-          
+
     }).first();
 
     // Append the username and score to the li element
